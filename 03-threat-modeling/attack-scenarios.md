@@ -1,292 +1,273 @@
-# Attack Scenarios  
-## Southern Cross Capital Pty Ltd  
-### Cloud Risk Simulation – Financial Services Environment
+# Attack Scenarios – Structured Risk Analysis
+## Southern Cross Capital Pty Ltd
+### Financial Services Cloud Migration (AWS)
 
 ---
 
-## Purpose of This Document
+## SCENARIO 1 — Public S3 Bucket Data Exposure
 
-This document simulates realistic cyber attack scenarios that could impact Southern Cross Capital during or after its migration to AWS.
+### 1. How the Attack Starts
 
-Each scenario includes:
+During cloud migration, a storage bucket is created to store historical customer transaction records.
 
-- Attack flow description  
-- Technical pathway  
-- Business impact  
-- Financial consequences  
-- Regulatory implications  
+The engineer disables "Block Public Access" temporarily for testing and forgets to re-enable it.
 
-These scenarios will later be converted into formal risk entries in the risk register.
+No automated configuration monitoring is in place.
 
 ---
 
-# SCENARIO 1 — Public S3 Bucket Data Exposure
+### 2. Vulnerability Exploited
 
-## Scenario Description
+- S3 bucket policy allows public read access
+- No S3 public access alerting configured
+- No periodic cloud configuration audit
 
-An S3 bucket storing customer transaction history is misconfigured during cloud migration.
-
-Public read access is mistakenly enabled.
-
-An external attacker discovers the exposed bucket using automated cloud scanning tools.
-
-Sensitive data is downloaded and later sold on dark web marketplaces.
+This is a **cloud misconfiguration vulnerability**.
 
 ---
 
-## Attack Flow
-
-1. Cloud engineer creates S3 bucket.
-2. Public access block settings are not enforced.
-3. Bucket policy allows public read access.
-4. Automated scanning tools detect exposed bucket.
-5. Attacker downloads transaction history files.
-6. Data appears for sale online.
-
----
-
-## Assets Impacted
+### 3. Asset Impacted
 
 - Customer financial data
-- Personal identity information
 - Transaction history
-- Corporate reputation
+- Personal identity information
+- Regulatory-sensitive records
+
+Classification: Highly Confidential
 
 ---
 
-## Business Impact
+### 4. Attack Execution
 
-- Immediate data breach declaration
-- Customer notification requirement
-- Media exposure
-- Loss of customer confidence
+1. External attacker uses automated cloud scanning tools.
+2. Public S3 bucket discovered.
+3. Transaction files downloaded.
+4. Data later appears on dark web marketplace.
 
----
-
-## Financial Impact
-
-- Regulatory penalties under Privacy Act
-- APRA CPS 234 compliance investigation
-- Incident response and forensic costs
-- Customer compensation claims
-- Potential class-action lawsuits
-
-Impact Severity: Severe
+No internal alert triggered due to lack of monitoring.
 
 ---
 
-## Regulatory Impact
+### 5. Business Consequences
 
-- Mandatory breach notification under Australian Notifiable Data Breaches (NDB) Scheme
-- APRA supervisory review
-- Increased regulatory oversight
-- Board accountability review
-
----
-
-# SCENARIO 2 — IAM Credential Compromise & Ransomware Deployment
-
-## Scenario Description
-
-An employee receives a phishing email disguised as an internal AWS alert.
-
-The employee unknowingly enters credentials into a fake login page.
-
-The attacker uses stolen IAM credentials to access the AWS environment.
-
-Privileges are escalated due to over-permissive IAM roles.
-
-Backups are deleted, and ransomware is deployed on EC2 instances.
+- Mandatory breach notification
+- Customer panic and trust erosion
+- Media coverage
+- Loss of competitive reputation
 
 ---
 
-## Attack Flow
+### 6. Financial Consequences
 
-1. Phishing email sent to privileged employee.
-2. Employee submits credentials to fake portal.
-3. Attacker logs into AWS console.
-4. Privilege escalation via weak IAM policies.
-5. Backup deletion in S3.
-6. Ransomware deployed on EC2 servers.
-7. Trading platform becomes unavailable.
+- Privacy Act penalties
+- APRA CPS 234 review
+- Customer compensation
+- Forensic investigation cost
+- Legal defence cost
+
+Impact Level: Severe
 
 ---
 
-## Assets Impacted
+## SCENARIO 2 — IAM Credential Compromise & Ransomware Deployment
 
-- Cloud infrastructure
+### 1. How the Attack Starts
+
+A privileged employee receives a phishing email disguised as an AWS security alert.
+
+The email links to a fake login portal.
+
+Employee enters IAM credentials.
+
+---
+
+### 2. Vulnerability Exploited
+
+- No phishing-resistant MFA
+- Over-permissive IAM role (Admin-level access)
+- No conditional access policies
+- No real-time anomaly detection
+
+Primary weakness: Weak Identity & Access Governance
+
+---
+
+### 3. Asset Impacted
+
+- AWS account control
 - EC2 trading servers
-- Backup systems
-- Customer transaction services
+- S3 backups
+- Core financial services
+
+Classification: Highly Confidential & Business Critical
 
 ---
 
-## Business Impact
+### 4. Attack Execution
 
-- Complete service outage
-- Trading suspension during market hours
-- Operational shutdown
+1. Attacker logs into AWS console.
+2. Escalates privileges.
+3. Deletes backup snapshots.
+4. Deploys ransomware on EC2 instances.
+5. Trading platform becomes unavailable.
+
+---
+
+### 5. Business Consequences
+
+- Complete trading outage
+- Market-hour disruption
 - Emergency incident response activation
+- Executive crisis management
 
 ---
 
-## Financial Impact
+### 6. Financial Consequences
 
-- Direct revenue loss
-- Customer compensation claims
-- Recovery infrastructure costs
+- Revenue loss during downtime
 - Potential ransom payment
-- Long-term reputational damage
+- Recovery infrastructure rebuild
+- Long-term brand damage
 
-Impact Severity: Severe
-
----
-
-## Regulatory Impact
-
-- APRA review for insufficient security controls
-- Investigation into MFA enforcement failure
-- Questions regarding IAM governance
-- Potential enforcement action
+Impact Level: Severe
 
 ---
 
-# SCENARIO 3 — Insider Data Theft
+## SCENARIO 3 — Insider Data Theft
 
-## Scenario Description
+### 1. How the Attack Starts
 
-A privileged system administrator exports a high-value customer investment list.
+A system administrator with legitimate database access exports high-value customer investment profiles.
 
-The data includes client financial profiles and investment strategies.
-
-The employee sells this information to a competitor.
-
-The breach is later discovered during an internal audit.
+There is no monitoring on bulk data export activity.
 
 ---
 
-## Attack Flow
+### 2. Vulnerability Exploited
 
-1. Admin accesses customer database.
-2. Data exported without detection.
-3. Data transferred externally.
-4. Competitor gains sensitive insights.
-5. Incident identified during periodic review.
+- Excessive database access privileges
+- Lack of data loss prevention (DLP)
+- No logging of large data exports
+- No separation of duties
+
+Primary weakness: Poor Privileged Access Governance
 
 ---
 
-## Assets Impacted
+### 3. Asset Impacted
 
 - Customer financial data
-- Investment strategy data
-- Confidential internal business information
+- Investment strategy profiles
+- Confidential business intelligence
+
+Classification: Highly Confidential
 
 ---
 
-## Business Impact
+### 4. Attack Execution
+
+1. Admin runs bulk export query.
+2. Data saved locally.
+3. Data transferred externally.
+4. Sale to competitor.
+
+Incident detected during quarterly audit.
+
+---
+
+### 5. Business Consequences
 
 - Competitive disadvantage
-- Customer distrust
-- Internal investigation
-- Legal escalation
-
----
-
-## Financial Impact
-
 - Loss of high-value clients
-- Legal defence costs
-- Regulatory fines
-- Shareholder impact
-
-Impact Severity: High to Severe
+- Internal governance investigation
+- Executive accountability
 
 ---
 
-## Regulatory Impact
+### 6. Financial Consequences
 
-- Privacy breach obligations
-- Internal governance review
-- APRA compliance investigation
-- Increased monitoring requirements
+- Customer churn
+- Legal proceedings
+- Regulatory penalties
+- Shareholder confidence decline
 
----
-
-# SCENARIO 4 — Distributed Denial of Service (DDoS) on Trading Platform
-
-## Scenario Description
-
-A botnet targets the online trading platform during peak market hours.
-
-The web application becomes overwhelmed by traffic.
-
-Customers are unable to execute trades.
+Impact Level: High to Severe
 
 ---
 
-## Attack Flow
+## SCENARIO 4 — Distributed Denial of Service (DDoS)
 
-1. Botnet sends large volume of requests.
-2. Web application servers become overloaded.
-3. System response times degrade.
-4. Trading platform becomes unavailable.
-5. Customers experience financial losses.
+### 1. How the Attack Starts
+
+A botnet targets the trading platform during peak trading hours.
+
+No advanced DDoS mitigation is configured.
 
 ---
 
-## Assets Impacted
+### 2. Vulnerability Exploited
 
-- Online trading platform
+- Insufficient traffic filtering
+- No AWS Shield Advanced
+- Limited scaling configuration
+- No rate limiting
+
+Primary weakness: Availability & Resilience Gap
+
+---
+
+### 3. Asset Impacted
+
+- Online trading web servers
 - Customer access portal
-- Revenue-generating services
+- Revenue-generating systems
+
+Classification: Business Critical
 
 ---
 
-## Business Impact
+### 4. Attack Execution
 
-- Trading disruption
-- Customer dissatisfaction
-- Emergency mitigation response
-- Media coverage
+1. Botnet floods application with requests.
+2. Servers become overloaded.
+3. Platform becomes unresponsive.
+4. Customers unable to trade.
 
 ---
 
-## Financial Impact
+### 5. Business Consequences
+
+- Missed trading opportunities
+- Customer frustration
+- Social media escalation
+- Media attention
+
+---
+
+### 6. Financial Consequences
 
 - Direct transaction revenue loss
-- Customer compensation claims
-- SLA penalties
-- Reputational damage affecting future growth
+- Compensation claims
+- SLA penalty costs
+- Reputation impact
 
-Impact Severity: High
-
----
-
-## Regulatory Impact
-
-- Investigation into resilience controls
-- Business continuity plan review
-- Board-level scrutiny
+Impact Level: High
 
 ---
 
-# Strategic Insight
+# Strategic Observation
 
-These attack scenarios demonstrate:
+Across all scenarios, core risk themes include:
 
-- Cloud misconfiguration risk
-- Identity governance weaknesses
-- Insider threat exposure
-- Availability and resilience challenges
+- Cloud misconfiguration
+- Weak identity governance
+- Privileged access abuse
+- Monitoring gaps
+- Resilience weaknesses
 
-In financial services, cyber incidents are not just technical failures — they are business and regulatory crises.
+These will now be converted into quantifiable risks in Phase 3.
 
-These scenarios will now be used to:
+Precision in attack mapping ensures accurate risk scoring.
 
-- Assign likelihood and impact scores
-- Calculate inherent risk
-- Design control strategies
-- Measure residual risk
-
-Next Phase:  
-➡️ Risk Methodology & Risk Register Construction
+Risk without precision becomes theory.
+Precision converts risk into governance action.
