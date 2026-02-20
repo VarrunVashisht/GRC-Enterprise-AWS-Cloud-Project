@@ -1,0 +1,273 @@
+# Attack Scenarios – Structured Risk Analysis
+## Southern Cross Capital Pty Ltd
+### Financial Services Cloud Migration (AWS)
+
+---
+
+## SCENARIO 1 — Public S3 Bucket Data Exposure
+
+### 1. How the Attack Starts
+
+During cloud migration, a storage bucket is created to store historical customer transaction records.
+
+The engineer disables "Block Public Access" temporarily for testing and forgets to re-enable it.
+
+No automated configuration monitoring is in place.
+
+---
+
+### 2. Vulnerability Exploited
+
+- S3 bucket policy allows public read access
+- No S3 public access alerting configured
+- No periodic cloud configuration audit
+
+This is a **cloud misconfiguration vulnerability**.
+
+---
+
+### 3. Asset Impacted
+
+- Customer financial data
+- Transaction history
+- Personal identity information
+- Regulatory-sensitive records
+
+Classification: Highly Confidential
+
+---
+
+### 4. Attack Execution
+
+1. External attacker uses automated cloud scanning tools.
+2. Public S3 bucket discovered.
+3. Transaction files downloaded.
+4. Data later appears on dark web marketplace.
+
+No internal alert triggered due to lack of monitoring.
+
+---
+
+### 5. Business Consequences
+
+- Mandatory breach notification
+- Customer panic and trust erosion
+- Media coverage
+- Loss of competitive reputation
+
+---
+
+### 6. Financial Consequences
+
+- Privacy Act penalties
+- APRA CPS 234 review
+- Customer compensation
+- Forensic investigation cost
+- Legal defence cost
+
+Impact Level: Severe
+
+---
+
+## SCENARIO 2 — IAM Credential Compromise & Ransomware Deployment
+
+### 1. How the Attack Starts
+
+A privileged employee receives a phishing email disguised as an AWS security alert.
+
+The email links to a fake login portal.
+
+Employee enters IAM credentials.
+
+---
+
+### 2. Vulnerability Exploited
+
+- No phishing-resistant MFA
+- Over-permissive IAM role (Admin-level access)
+- No conditional access policies
+- No real-time anomaly detection
+
+Primary weakness: Weak Identity & Access Governance
+
+---
+
+### 3. Asset Impacted
+
+- AWS account control
+- EC2 trading servers
+- S3 backups
+- Core financial services
+
+Classification: Highly Confidential & Business Critical
+
+---
+
+### 4. Attack Execution
+
+1. Attacker logs into AWS console.
+2. Escalates privileges.
+3. Deletes backup snapshots.
+4. Deploys ransomware on EC2 instances.
+5. Trading platform becomes unavailable.
+
+---
+
+### 5. Business Consequences
+
+- Complete trading outage
+- Market-hour disruption
+- Emergency incident response activation
+- Executive crisis management
+
+---
+
+### 6. Financial Consequences
+
+- Revenue loss during downtime
+- Potential ransom payment
+- Recovery infrastructure rebuild
+- Long-term brand damage
+
+Impact Level: Severe
+
+---
+
+## SCENARIO 3 — Insider Data Theft
+
+### 1. How the Attack Starts
+
+A system administrator with legitimate database access exports high-value customer investment profiles.
+
+There is no monitoring on bulk data export activity.
+
+---
+
+### 2. Vulnerability Exploited
+
+- Excessive database access privileges
+- Lack of data loss prevention (DLP)
+- No logging of large data exports
+- No separation of duties
+
+Primary weakness: Poor Privileged Access Governance
+
+---
+
+### 3. Asset Impacted
+
+- Customer financial data
+- Investment strategy profiles
+- Confidential business intelligence
+
+Classification: Highly Confidential
+
+---
+
+### 4. Attack Execution
+
+1. Admin runs bulk export query.
+2. Data saved locally.
+3. Data transferred externally.
+4. Sale to competitor.
+
+Incident detected during quarterly audit.
+
+---
+
+### 5. Business Consequences
+
+- Competitive disadvantage
+- Loss of high-value clients
+- Internal governance investigation
+- Executive accountability
+
+---
+
+### 6. Financial Consequences
+
+- Customer churn
+- Legal proceedings
+- Regulatory penalties
+- Shareholder confidence decline
+
+Impact Level: High to Severe
+
+---
+
+## SCENARIO 4 — Distributed Denial of Service (DDoS)
+
+### 1. How the Attack Starts
+
+A botnet targets the trading platform during peak trading hours.
+
+No advanced DDoS mitigation is configured.
+
+---
+
+### 2. Vulnerability Exploited
+
+- Insufficient traffic filtering
+- No AWS Shield Advanced
+- Limited scaling configuration
+- No rate limiting
+
+Primary weakness: Availability & Resilience Gap
+
+---
+
+### 3. Asset Impacted
+
+- Online trading web servers
+- Customer access portal
+- Revenue-generating systems
+
+Classification: Business Critical
+
+---
+
+### 4. Attack Execution
+
+1. Botnet floods application with requests.
+2. Servers become overloaded.
+3. Platform becomes unresponsive.
+4. Customers unable to trade.
+
+---
+
+### 5. Business Consequences
+
+- Missed trading opportunities
+- Customer frustration
+- Social media escalation
+- Media attention
+
+---
+
+### 6. Financial Consequences
+
+- Direct transaction revenue loss
+- Compensation claims
+- SLA penalty costs
+- Reputation impact
+
+Impact Level: High
+
+---
+
+# Strategic Observation
+
+Across all scenarios, core risk themes include:
+
+- Cloud misconfiguration
+- Weak identity governance
+- Privileged access abuse
+- Monitoring gaps
+- Resilience weaknesses
+
+These will now be converted into quantifiable risks in Phase 3.
+
+Precision in attack mapping ensures accurate risk scoring.
+
+Risk without precision becomes theory.
+Precision converts risk into governance action.
