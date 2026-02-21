@@ -1,1 +1,12 @@
-
+| Threat                | Vulnerability                         | Likelihood (1-5) | Impact (1-5) | Risk Score (LxI) | Risk Level | Existing Control                                   | Residual Risk (Post-Control) |
+|-----------------------|----------------------------------------|------------------|--------------|------------------|------------|----------------------------------------------------|-------------------------------|
+| External Attacker     | Misconfigured public bucket           | 4                | 5            | 20               | Critical   | S3 Block Public Access, bucket policy review       | High                          |
+| Credential Theft      | Over-permissive IAM role              | 3                | 5            | 15               | High       | Least privilege policy, IAM review                 | Medium                        |
+| Malware / Ransomware  | Unpatched OS                          | 3                | 5            | 15               | High       | Patch management & endpoint protection             | Medium                        |
+| Account Takeover      | No MFA enforced                       | 4                | 4            | 16               | Critical   | Mandatory MFA enforcement                          | Medium                        |
+| Undetected Breach     | Logging disabled                      | 3                | 4            | 12               | High       | CloudTrail enabled & monitored                     | Medium                        |
+| Data Loss             | Improper backup configuration         | 2                | 5            | 10               | Medium     | Automated backup & retention policy                | Low                           |
+| DDoS Botnet Attack    | No advanced DDoS protection           | 3                | 4            | 12               | High       | AWS Shield & scaling policy                        | Medium                        |
+| Rogue Employee        | Excessive data export permissions     | 2                | 5            | 10               | Medium     | Access monitoring & DLP controls                   | Low                           |
+| Supply Chain Attack   | Vendor security weakness              | 2                | 5            | 10               | Medium     | Vendor risk assessment & API monitoring            | Medium                        |
+| External Scanning     | Open inbound ports (0.0.0.0/0)        | 4                | 4            | 16               | Critical   | Restricted security group rules                    | High                          |
