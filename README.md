@@ -170,6 +170,7 @@ This simulation demonstrates end-to-end cyber risk lifecycle capability in a reg
 
 ## Author: 
 Varrun Vashisht
+
 Cyber Risk & GRC Portfolio Project
 
 
